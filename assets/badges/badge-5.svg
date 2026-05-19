@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160">
+  <defs>
+    <radialGradient id="body" cx="32%" cy="22%" r="72%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".22" stop-color="#e8ffd4"/>
+      <stop offset=".58" stop-color="#95ef62"/>
+      <stop offset="1" stop-color="#13a05a"/>
+    </radialGradient>
+    <linearGradient id="edge" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#fffdf4"/><stop offset=".5" stop-color="#ffffff" stop-opacity=".58"/><stop offset="1" stop-color="#42271a" stop-opacity=".25"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="7" stdDeviation="4" flood-color="#3a190e" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <circle cx="80" cy="80" r="66" fill="url(#body)" stroke="#ffe9b8" stroke-width="7"/>
+    <circle cx="80" cy="80" r="58" fill="none" stroke="url(#edge)" stroke-width="6"/>
+    <path d="M32 77c11-33 42-47 74-36" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".34"/>
+    <path d="M39 42q25-25 50 0M48 34l-8 24M80 34l9 24" fill="none" stroke="#e8ffd4" stroke-width="7" stroke-linecap="round"/>
+    <ellipse cx="61" cy="76" rx="8" ry="10" fill="#123d31"/>
+    <ellipse cx="99" cy="76" rx="8" ry="10" fill="#123d31"/>
+    <circle cx="58" cy="72" r="3" fill="#fff" opacity=".8"/>
+    <circle cx="96" cy="72" r="3" fill="#fff" opacity=".8"/>
+    <path d="M56 103q24 18 48 0" fill="none" stroke="#123d31" stroke-width="8" stroke-linecap="round"/>
+    <path d="M42 116q38 24 76 0" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".22"/>
+    <g transform="translate(103 25) rotate(17)">
+      <path d="M0 8l6 3 6-3-3 7 3 7-6-3-6 3 3-7z" fill="#fff175" stroke="#e69e20" stroke-width="1.5"/>
+    </g>
+    <text x="80" y="135" text-anchor="middle" font-size="25" font-weight="900" fill="#fff" stroke="#123d31" stroke-width="3" paint-order="stroke">竹</text>
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 210">
+  <defs>
+    <linearGradient id="teal" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#1e918e"/><stop offset="1" stop-color="#04505d"/></linearGradient>
+    <linearGradient id="gold" x1="0" x2="1"><stop stop-color="#fff28c"/><stop offset=".52" stop-color="#ffd55e"/><stop offset="1" stop-color="#c87319"/></linearGradient>
+    <filter id="s" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="8" stdDeviation="4" flood-color="#002c37" flood-opacity=".55"/></filter>
+  </defs>
+  <g filter="url(#s)">
+    <path d="M210 26c43 0 78 28 86 66h38c20 0 36 16 36 36s-16 36-36 36H86c-20 0-36-16-36-36s16-36 36-36h38c8-38 43-66 86-66z" fill="url(#gold)"/>
+    <path d="M86 104h248c13 0 24 11 24 24s-11 24-24 24H86c-13 0-24-11-24-24s11-24 24-24z" fill="url(#teal)" stroke="#083d43" stroke-width="8"/>
+    <path d="M110 151c64 22 145 22 205 0" fill="none" stroke="#fff0a8" stroke-width="5" opacity=".65"/>
+    <g transform="translate(158 0)">
+      <circle cx="52" cy="54" r="42" fill="#ffe6b1" stroke="#0b4a69" stroke-width="8"/>
+      <path d="M13 50q39-34 78 0V28q-39-18-78 0z" fill="#248bd0" stroke="#083f61" stroke-width="6"/>
+      <rect x="36" y="10" width="32" height="34" rx="4" fill="#ffdf6b" stroke="#083f61" stroke-width="5"/>
+      <text x="52" y="35" text-anchor="middle" font-size="22" font-weight="900" fill="#d9251c">福</text>
+      <circle cx="38" cy="58" r="5" fill="#6b3c1a"/><circle cx="66" cy="58" r="5" fill="#6b3c1a"/>
+      <path d="M36 75q16 13 32 0" fill="none" stroke="#6b3c1a" stroke-width="6" stroke-linecap="round"/>
+    </g>
+    <text x="210" y="140" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="54" font-weight="900" fill="#f7fff0" stroke="#063d48" stroke-width="12" paint-order="stroke">好运对对碰</text>
+    <text x="210" y="140" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="54" font-weight="900" fill="#f7fff0" stroke="#ffdf75" stroke-width="3" paint-order="stroke">好运对对碰</text>
+  </g>
+</svg>

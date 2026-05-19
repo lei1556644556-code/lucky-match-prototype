@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 120">
+  <defs><radialGradient id="g" cx="50%" cy="50%"><stop stop-color="#fff"/><stop offset=".42" stop-color="#fff"/><stop offset=".45" stop-color="#fff16b"/><stop offset=".72" stop-color="#ffe13f"/><stop offset="1" stop-color="#f7a61e"/></radialGradient><filter id="s"><feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#fff7a0" flood-opacity=".9"/></filter></defs>
+  <rect x="12" y="16" width="118" height="88" rx="10" fill="#0a6977"/>
+  <g filter="url(#s)" transform="translate(38 18)"><path d="M52 0l11 22 24-8-8 24 22 11-22 11 8 24-24-8-11 22-11-22-24 8 8-24L3 49l22-11-8-24 24 8z" fill="url(#g)" stroke="#fffbd0" stroke-width="5"/><text x="52" y="58" text-anchor="middle" font-size="27" font-weight="900" fill="#d47d14">清台</text></g>
+</svg>

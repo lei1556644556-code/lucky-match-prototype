@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>好运对对碰 - 原型</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="phone-shell">
+      <section class="game-screen">
+        <button class="back-button" aria-label="返回">‹</button>
+        <button class="top-pack" id="openPackage" type="button">
+          <span class="ticket-stack"></span>
+          <small id="packTimer">6时29分</small>
+        </button>
+
+        <header class="brand">
+          <img class="game-logo" src="assets/ui/logo.svg" alt="好运对对碰" />
+        </header>
+
+        <section class="milestone-card" id="openAchievements">
+          <div class="stage-label">阶段 <span id="stageNumber">1</span></div>
+          <div class="milestone-line" id="milestoneLine"></div>
+          <div class="stage-time">◷ 1天16时</div>
+        </section>
+
+        <section class="cabinet">
+          <div class="board" id="board"></div>
+          <div class="rule-strip">
+            <div>幸运色 <b>+1</b></div>
+            <div>对碰 <b>+1</b></div>
+            <div>三连 <b>+5</b></div>
+            <div>清台 <b>+8</b></div>
+            <button id="openRules" class="info-button" type="button">i</button>
+          </div>
+          <div class="round-achievement" id="roundAchievement">
+            <div class="round-copy">
+              <b id="roundAchievementTitle">本局成就</b>
+              <span id="roundAchievementText">当前 0 / 下档 10，奖励 +3 盲袋</span>
+            </div>
+            <div class="round-progress"><span id="roundAchievementFill"></span></div>
+          </div>
+          <div class="drawer-row">
+            <div class="collection-box">
+              <div class="box-lid"></div>
+              <div class="badge-stack" id="collectionPreview"></div>
+              <b id="bagCount">0</b>
+            </div>
+            <div class="blind-drawer" id="blindDrawer">
+              <div class="blind-grid" id="blindGrid"></div>
+              <b id="blindCount">0</b>
+            </div>
+            <div class="lucky-card">
+              <span>幸运色</span>
+              <div id="luckyPreview" class="mini-badge empty">?</div>
+            </div>
+          </div>
+        </section>
+
+        <div class="speech" id="guideSpeech">
+          店里刚到了一批小吉的徽章盲袋，来一起试试手气吧！
+        </div>
+
+        <button class="primary-cta" id="startButton" type="button">
+          开始
+          <small>消耗 1 张入场券</small>
+        </button>
+
+        <footer class="resource-bar">
+          <div><span class="ticket-icon"></span><b id="ticketCount">3</b></div>
+          <div><span class="cube-icon"></span><b id="boosterCount">50</b></div>
+          <div><span class="coin-icon"></span><b id="tokenCount">0</b></div>
+        </footer>
+      </section>
+    </main>
+
+    <div class="toast" id="toast"></div>
+
+    <dialog class="modal rules-modal" id="rulesModal">
+      <button class="close" data-close="rulesModal" type="button">×</button>
+      <h2>活动规则</h2>
+      <p>每轮游戏开始时，你将获得 9 个盲袋。打开盲袋可随机获得不同表情的徽章。若触发以下条件，还能获得更多盲袋。</p>
+      <div class="rule-list">
+        <article>
+          <div class="rule-art lucky-art"></div>
+          <h3>幸运色</h3>
+          <p>当徽章与你所选的幸运徽章相同</p>
+          <strong>+1</strong>
+        </article>
+        <article>
+          <div class="rule-art pair-art"></div>
+          <h3>对碰</h3>
+          <p>当盘面上有两个相同颜色的徽章</p>
+          <strong>+1</strong>
+        </article>
+        <article>
+          <div class="rule-art line-art"></div>
+          <h3>三连</h3>
+          <p>当盘面上有三个在同一条线上的相同徽章</p>
+          <strong>+5</strong>
+        </article>
+        <article>
+          <div class="rule-art family-art"></div>
+          <h3>全家福</h3>
+          <p>当九宫格全满且九个徽章全部不同</p>
+          <strong>+8</strong>
+        </article>
+        <article>
+          <div class="rule-art clear-art"></div>
+          <h3>清台</h3>
+          <p>当盘面上所有徽章被清空</p>
+          <strong>+8</strong>
+        </article>
+      </div>
+      <button class="modal-action" data-close="rulesModal" type="button">点击继续</button>
+    </dialog>
+
+    <dialog class="modal picker-modal" id="pickerModal">
+      <h2>挑选幸运色</h2>
+      <div class="badge-picker" id="badgePicker"></div>
+      <button class="modal-action" id="confirmLucky" type="button" disabled>确定</button>
+    </dialog>
+
+    <dialog class="modal rescue-modal" id="rescueModal">
+      <h2>再拆几包盲袋试试吧？</h2>
+      <p>本轮游戏仅此一次补充机会</p>
+      <div class="rescue-achievement" id="rescueAchievement">
+        <b id="rescueAchievementTitle">本局成就</b>
+        <span id="rescueAchievementText">当前 0 / 下档 10，奖励 +3 盲袋</span>
+        <div class="round-progress"><span id="rescueAchievementFill"></span></div>
+      </div>
+      <div class="rescue-options" id="rescueOptions"></div>
+      <button class="secondary-action" id="skipRescue" type="button">结束</button>
+    </dialog>
+
+    <dialog class="modal shortage-modal" id="shortageModal">
+      <h2>补充包代币不足</h2>
+      <p id="shortageText">当前补充包代币不足，可以先购买礼包。</p>
+      <div class="button-row">
+        <button class="modal-action" id="goPackageFromRescue" type="button">去买礼包</button>
+        <button class="secondary-action" data-close="shortageModal" type="button">继续选择</button>
+      </div>
+    </dialog>
+
+    <dialog class="modal result-modal" id="resultModal">
+      <h2>本轮已结束</h2>
+      <div class="result-crate" id="resultCrate"></div>
+      <p class="result-total">共收集吧唧 <b id="resultTotal">0</b></p>
+      <div class="result-grid" id="resultBreakdown"></div>
+      <div class="result-notes" id="resultNotes"></div>
+      <div class="button-row">
+        <button class="modal-action" id="againButton" type="button">再来一局</button>
+        <button class="secondary-action" data-close="resultModal" type="button">返回</button>
+      </div>
+    </dialog>
+
+    <dialog class="modal achievements-modal" id="achievementsModal">
+      <button class="close" data-close="achievementsModal" type="button">×</button>
+      <h2>外部成就</h2>
+      <p id="achievementSummary">累计吧唧达到目标时，领取补充包代币。</p>
+      <div class="achievement-progress">
+        <div class="progress-copy">
+          <b id="currentLifetime">0</b>
+          <span id="nextAchievementText">下档 50 可获得补充包代币</span>
+        </div>
+        <div class="progress-track"><span id="achievementProgressFill"></span></div>
+      </div>
+      <div class="achievement-stages" id="achievementStages"></div>
+    </dialog>
+
+    <dialog class="modal package-modal" id="packageModal">
+      <button class="close" data-close="packageModal" type="button">×</button>
+      <div class="package-title">
+        <img class="package-logo" src="assets/ui/logo.svg" alt="对对碰特惠购" />
+        <h2>特惠购</h2>
+      </div>
+      <div class="package-cards" id="packageCards"></div>
+      <button class="bundle-button" id="buyBundle" type="button">￥25 打包全收</button>
+      <p class="countdown">剩余时间: <b>6时25分</b></p>
+    </dialog>
+
+    <dialog class="modal purchase-modal" id="purchaseModal">
+      <h2>购买成功</h2>
+      <div class="purchase-rewards" id="purchaseRewards"></div>
+      <button class="modal-action" data-close="purchaseModal" type="button">确定</button>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>

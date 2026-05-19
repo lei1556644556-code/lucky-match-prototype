@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>好运对对碰 UI 设计系统</title>
+    <link rel="stylesheet" href="ui-styleguide.css" />
+  </head>
+  <body>
+    <main class="demo-shell">
+      <nav class="top-nav">
+        <button class="nav-icon" type="button" aria-label="返回">‹</button>
+        <div class="nav-title">好运对对碰 UI Kit</div>
+        <button class="nav-pack" type="button">
+          <span class="icon-ticket"></span>
+          <small>6时29分</small>
+        </button>
+      </nav>
+
+      <section class="hero-panel">
+        <img class="event-logo" src="assets/ui/logo.svg" alt="好运对对碰" />
+        <div class="progress-card">
+          <div class="stage-pill">阶段 1</div>
+          <div class="reward-track">
+            <span class="track-line"></span>
+            <div class="reward-node is-done"><span class="icon-chest"></span><b>50</b></div>
+            <div class="reward-node"><span class="icon-chest"></span><b>200</b></div>
+            <div class="reward-node"><span class="icon-chest"></span><b>500</b></div>
+            <div class="reward-node"><span class="icon-chest"></span><b>1000</b></div>
+            <div class="reward-node"><span class="icon-chest"></span><b>2000</b></div>
+          </div>
+          <p>当前 99 / 下档 200，奖励 +10</p>
+        </div>
+      </section>
+
+      <section class="component-grid">
+        <article class="wood-card board-card">
+          <header class="section-title">
+            <h2>卡片 / 棋盘容器</h2>
+            <span>Wood Panel</span>
+          </header>
+          <div class="board-demo">
+            <div class="board-cell"><img src="assets/badges/badge-4.svg" alt="" /></div>
+            <div class="board-cell"><img src="assets/badges/badge-3.svg" alt="" /></div>
+            <div class="board-cell"></div>
+            <div class="board-cell"></div>
+            <div class="board-cell"><img src="assets/badges/badge-8.svg" alt="" /></div>
+            <div class="board-cell"></div>
+            <div class="board-cell"></div>
+            <div class="board-cell"></div>
+            <div class="board-cell"><img src="assets/badges/badge-2.svg" alt="" /></div>
+          </div>
+        </article>
+
+        <article class="teal-card">
+          <header class="section-title">
+            <h2>按钮</h2>
+            <span>Buttons</span>
+          </header>
+          <div class="button-stack">
+            <button class="btn btn-primary" type="button">开始 <small>消耗 1 张入场券</small></button>
+            <button class="btn btn-gold" type="button">确定</button>
+            <button class="btn btn-blue" type="button">结束</button>
+          </div>
+        </article>
+
+        <article class="teal-card">
+          <header class="section-title">
+            <h2>表单</h2>
+            <span>Form</span>
+          </header>
+          <form class="form-demo">
+            <label>
+              <span>玩家昵称</span>
+              <input type="text" value="小吉" />
+            </label>
+            <label>
+              <span>提醒方式</span>
+              <select>
+                <option>奖励达成时提醒</option>
+                <option>活动结束前提醒</option>
+              </select>
+            </label>
+            <label class="toggle-row">
+              <input type="checkbox" checked />
+              <span>开启补充包确认弹窗</span>
+            </label>
+          </form>
+        </article>
+
+        <article class="modal-card">
+          <button class="modal-close" type="button" aria-label="关闭">×</button>
+          <header class="section-title centered">
+            <h2>规则卡片</h2>
+            <span>Rule List</span>
+          </header>
+          <div class="rule-list-demo">
+            <div class="rule-row">
+              <img src="assets/ui/rule-lucky.svg" alt="" />
+              <div><b>幸运色</b><p>徽章与所选幸运徽章相同</p></div>
+              <strong>+1</strong>
+            </div>
+            <div class="rule-row">
+              <img src="assets/ui/rule-pair.svg" alt="" />
+              <div><b>对碰</b><p>盘面上有两个相同徽章</p></div>
+              <strong>+1</strong>
+            </div>
+            <div class="rule-row">
+              <img src="assets/ui/rule-triple.svg" alt="" />
+              <div><b>三连</b><p>三个相同徽章处于同一线</p></div>
+              <strong>+5</strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="package-card-demo">
+          <header class="section-title centered">
+            <h2>礼包卡片</h2>
+            <span>Offer Cards</span>
+          </header>
+          <div class="offer-list">
+            <button class="offer-card" type="button">
+              <span class="icon-ticket"></span>
+              <b>入场券 80</b>
+              <em>￥6</em>
+            </button>
+            <button class="offer-card is-featured" type="button">
+              <span class="icon-cube"></span>
+              <b>补充包 30</b>
+              <em>￥12</em>
+            </button>
+            <button class="offer-card is-premium" type="button">
+              <span class="icon-energy"></span>
+              <b>能量 120</b>
+              <em>￥18</em>
+            </button>
+          </div>
+        </article>
+
+        <article class="teal-card">
+          <header class="section-title">
+            <h2>列表项</h2>
+            <span>List Items</span>
+          </header>
+          <div class="list-demo">
+            <button class="list-item" type="button">
+              <span class="icon-chest"></span>
+              <div><b>累计 200</b><small>还差 101 个吧唧</small></div>
+              <strong>+10</strong>
+            </button>
+            <button class="list-item" type="button">
+              <img src="assets/badges/badge-6.svg" alt="" />
+              <div><b>幸运色</b><small>本局已选择</small></div>
+              <strong>已启用</strong>
+            </button>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

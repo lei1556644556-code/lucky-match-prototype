@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 120">
+  <defs>
+    <filter id="s"><feDropShadow dx="0" dy="5" stdDeviation="3" flood-color="#022a31" flood-opacity=".45"/></filter>
+    <linearGradient id="gold" x1="0" x2="1"><stop stop-color="#fff7a0"/><stop offset=".55" stop-color="#ffd54d"/><stop offset="1" stop-color="#f08a1b"/></linearGradient>
+  </defs>
+  <rect x="10" y="14" width="132" height="90" rx="10" fill="#0a6977"/>
+  <path d="M54 14v90M98 14v90M10 44h132M10 74h132" stroke="#63d8e5" stroke-width="3" opacity=".45"/>
+  <g filter="url(#s)">
+    <circle cx="32" cy="34" r="14" fill="#ff78bd"/>
+    <circle cx="76" cy="34" r="14" fill="#ffd55f"/>
+    <circle cx="120" cy="34" r="14" fill="#7ce1d6"/>
+    <circle cx="32" cy="62" r="14" fill="#78caff"/>
+    <circle cx="76" cy="62" r="14" fill="#ff816f"/>
+    <circle cx="120" cy="62" r="14" fill="#95ef62"/>
+    <circle cx="32" cy="90" r="14" fill="#ffb35f"/>
+    <circle cx="76" cy="90" r="14" fill="#a27aff"/>
+    <circle cx="120" cy="90" r="14" fill="#ff9db8"/>
+  </g>
+  <path d="M144 23l7 15 16-5-5 16 15 7-15 7 5 16-16-5-7 15-7-15-16 5 5-16-15-7 15-7-5-16 16 5z" fill="url(#gold)" stroke="#fffbd0" stroke-width="4"/>
+</svg>
