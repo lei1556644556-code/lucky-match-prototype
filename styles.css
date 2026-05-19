@@ -1193,7 +1193,7 @@ dialog::backdrop {
 
 .result-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 8px;
   margin: 14px 0;
 }
@@ -1206,6 +1206,33 @@ dialog::backdrop {
   padding: 6px;
   border-radius: 10px;
   background: rgba(3, 94, 108, 0.72);
+}
+
+.result-stat {
+  min-height: 56px;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid rgba(255, 237, 147, 0.35);
+  background: linear-gradient(180deg, rgba(6, 128, 138, 0.88), rgba(1, 62, 83, 0.88));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 4px 0 rgba(0, 35, 47, 0.42);
+}
+
+.result-stat span {
+  color: #fff1b5;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.result-stat b {
+  color: #ffffff;
+  font-size: 28px;
+  line-height: 1;
+  text-shadow: 0 2px 0 rgba(0, 40, 50, 0.7);
+}
+
+.result-stat small {
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 900;
 }
 
 .result-notes {

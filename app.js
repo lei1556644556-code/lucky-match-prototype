@@ -50,6 +50,7 @@ const state = {
   board: Array(9).fill(null),
   blindBoxes: 0,
   bag: [],
+  matchStats: { family: 0, triple: 0, pair: 0, clear: 0 },
   rescueUsed: false,
   gameActive: false,
   triggeredRoundAchievements: new Set(),
@@ -209,6 +210,7 @@ function resetRound() {
   state.board = Array(9).fill(null);
   state.blindBoxes = CONFIG.initialBlindBoxes;
   state.bag = [];
+  state.matchStats = { family: 0, triple: 0, pair: 0, clear: 0 };
   state.rescueUsed = false;
   state.gameActive = true;
   state.triggeredRoundAchievements = new Set();
@@ -336,21 +338,21 @@ async function resolveBoard() {
     const family = findFamily();
     if (family) {
       hadMatch = true;
-      await removeBadges(family, 8, "全家福 +8");
+      await removeBadges(family, 8, "全家福 +8", "family");
       continue;
     }
 
     const triple = findTriple();
     if (triple) {
       hadMatch = true;
-      await removeBadges(triple, 5, "三连 +5");
+      await removeBadges(triple, 5, "三连 +5", "triple");
       continue;
     }
 
     const pair = findPair();
     if (pair) {
       hadMatch = true;
-      await removeBadges(pair, 1, "对碰 +1");
+      await removeBadges(pair, 1, "对碰 +1", "pair");
       continue;
     }
     break;
@@ -374,10 +376,14 @@ async function resolveBoard() {
   }
 }
 
-async function removeBadges(indices, blindReward, label) {
+async function removeBadges(indices, blindReward, label, statKey) {
   indices.forEach((index) => document.querySelector(`[data-cell="${index}"]`)?.classList.add("removing"));
   showToast(label);
   await wait(460);
+
+  if (statKey && state.matchStats[statKey] !== undefined) {
+    state.matchStats[statKey] += 1;
+  }
 
   const removed = indices.map((index) => state.board[index]);
   removed.forEach((type) => state.bag.push(type));
@@ -388,6 +394,7 @@ async function removeBadges(indices, blindReward, label) {
 
   if (boardIsEmpty()) {
     state.blindBoxes += 8;
+    state.matchStats.clear += 1;
     showToast("清台 +8");
     await wait(360);
   }
@@ -482,14 +489,12 @@ function finishGame() {
   state.gameActive = false;
   const remaining = state.board.filter((item) => item !== null);
   const totalBadges = state.bag.length + remaining.length;
-  const allBadges = [...state.bag, ...remaining];
-  const counts = CONFIG.emojis.map((_, index) => allBadges.filter((type) => type === index).length);
   state.storeTokens += totalBadges;
   state.lifetimeBadges += totalBadges;
   const externalRewards = checkExternalAchievements();
   state.lastResult = {
     totalBadges,
-    counts,
+    matchStats: { ...state.matchStats },
     rescueUsed: state.rescueUsed,
     roundAchievements: [...state.triggeredRoundAchievements],
     externalRewards,
@@ -518,10 +523,16 @@ function renderResult() {
     .slice(0, 8)
     .map((_, index) => `<img class="mini-badge badge-${index}" src="assets/badges/badge-${index}.svg" alt="${CONFIG.emojis[index]}徽章" style="transform: rotate(${(index - 3.5) * 9}deg) translateY(${-index * 3}px)">`)
     .join("");
-  $("#resultBreakdown").innerHTML = result.counts
+  const statItems = [
+    { label: "全家福", value: result.matchStats.family },
+    { label: "三连", value: result.matchStats.triple },
+    { label: "对对碰", value: result.matchStats.pair },
+    { label: "清盘", value: result.matchStats.clear },
+  ];
+  $("#resultBreakdown").innerHTML = statItems
     .map(
-      (count, index) => `<div class="result-item">
-        <img class="mini-badge badge-${index}" src="assets/badges/badge-${index}.svg" alt="${CONFIG.emojis[index]}徽章"><b>${count}</b>
+      (item) => `<div class="result-item result-stat">
+        <span>${item.label}</span><b>${item.value}</b><small>次</small>
       </div>`,
     )
     .join("");
